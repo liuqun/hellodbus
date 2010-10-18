@@ -23,12 +23,12 @@ void send_message_through_connection(const char msg[], DBusConnection *pdbconn)
 	dbus_message_unref(pdbmsg);
 }
 
-void send_message(const char msg[], DBusBusType session, DBusError *pdberr)
+void send_message(const char msg[], DBusBusType bus, DBusError *pdberr)
 {
 	assert(pdberr != NULL);
 	DBusConnection *pdbconn;
 
-	pdbconn = dbus_bus_get(session, pdberr);
+	pdbconn = dbus_bus_get(bus, pdberr);
 	if (dbus_error_is_set(pdberr))
 	{
 		fprintf(stderr, "%s:%d:%s()\n", __FILE__, __LINE__, __func__);
