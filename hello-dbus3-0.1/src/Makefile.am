@@ -11,7 +11,7 @@ LIBS = \
 # example-service
 noinst_PROGRAMS = example-service
 
-example_service_SOURCES = example-service.c
+example_service_SOURCES = example-service.c testobj.c
 
 BUILT_SOURCES = example-service-glue.h
 

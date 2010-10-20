@@ -26,47 +26,11 @@ lose_gerror (const char *prefix, GError *error)
   lose ("%s: %s", prefix, error->message);
 }
 
-typedef struct TestObj TestObj;
-typedef struct TestObjClass TestObjClass;
+#include "testobj.h"
 
-GType test_obj_get_type (void);
 
-struct TestObj
-{
-  GObject parent;
-};
-
-struct TestObjClass
-{
-  GObjectClass parent;
-};
-
-#define TEST_TYPE_OBJECT              (test_obj_get_type ())
-#define TEST_OBJECT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), TEST_TYPE_OBJECT, TestObj))
-#define TEST_OBJECT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), TEST_TYPE_OBJECT, TestObjClass))
-#define TEST_IS_OBJECT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), TEST_TYPE_OBJECT))
-#define TEST_IS_OBJECT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), TEST_TYPE_OBJECT))
-#define TEST_OBJECT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), TEST_TYPE_OBJECT, TestObjClass))
-
-G_DEFINE_TYPE(TestObj, test_obj, G_TYPE_OBJECT)
-
-gboolean test_obj_add (TestObj *obj, int num1, int num2, int *sum, GError **error);
 
 #include "example-service-glue.h"
-
-static void test_obj_init (TestObj *obj)
-{
-}
-
-static void test_obj_class_init (TestObjClass *klass)
-{
-}
-
-gboolean test_obj_add (TestObj *obj, int num1, int num2, int *sum, GError **error)
-{
-  *sum = num1 + num2;
-  return TRUE;
-}
 
 int main (int argc, char **argv)
 {
