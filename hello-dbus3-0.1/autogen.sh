@@ -4,4 +4,4 @@ aclocal
 autoconf
 autoheader
 touch NEWS README AUTHORS ChangeLog
-automake --add-missing
+automake --add-missing --copy
